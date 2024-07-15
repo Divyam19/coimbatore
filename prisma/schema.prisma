@@ -21,6 +21,23 @@ datasource db {
 }
 
 
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
 model Account {
   id                 String  @id @default(cuid())
   userId             String
@@ -42,12 +59,10 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+enum Role{
+  ADMIN
+  USER
+  SELLER
 }
 
 model User {
@@ -56,14 +71,27 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  role          Role      @default(USER)
   accounts      Account[]
   sessions      Session[]
 }
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+model Seller{
+  id            String    @id @default(cuid())
+  name          String
+  products      Product[]
+  country       String
+  city          String
 
-  @@unique([identifier, token])
+}
+
+model Product{
+  id            String    @id @default(cuid())
+  name          String
+  type          String
+  description   String?
+  sellerId      String
+  production    String?
+  
+  seller        Seller    @relation(fields: [sellerId],references: [id])
 }
