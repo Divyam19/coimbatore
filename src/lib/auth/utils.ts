@@ -7,6 +7,7 @@ import { env } from "@/lib/env.mjs"
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 
+
 declare module "next-auth" {
   interface Session {
     user: DefaultSession["user"] & {

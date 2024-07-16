@@ -59,10 +59,10 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-enum Role{
-  ADMIN
-  USER
+enum Role {
   SELLER
+  USER
+  ADMIN
 }
 
 model User {
@@ -82,6 +82,7 @@ model Seller{
   products      Product[]
   country       String
   city          String
+  email         String    @unique
 
 }
 
@@ -92,6 +93,6 @@ model Product{
   description   String?
   sellerId      String
   production    String?
-  
+
   seller        Seller    @relation(fields: [sellerId],references: [id])
 }
