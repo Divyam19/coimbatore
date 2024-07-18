@@ -5,7 +5,8 @@ import { getUserAuth } from '@/lib/auth/utils'
 
 import Modal from './Modal';
 import { useState } from 'react';
-import FormDialog from './FormDialog';
+import FormDialog from './AddProduct';
+import AddProduct from './AddProduct';
 
 
 async function checkSellerEmail(email:string) {
@@ -36,8 +37,9 @@ const AddProducts = async  () => {
         <h1 className="text-2xl font-semibold my-4">Add Products</h1>
         <div>
           <div >
-            <FormDialog  />
+            <AddProduct  />
           </div>
+          
         </div>
       </div>
     )

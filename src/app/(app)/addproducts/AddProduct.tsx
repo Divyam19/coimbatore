@@ -13,7 +13,7 @@ import { Input } from '@/components/ui/input'
 import { getUserAuth } from '@/lib/auth/utils'
 import { Button } from '@/components/ui/button'
   
-const FormDialog = async () => {
+const AddProduct = async () => {
     const options=[
         {value:'not-selected',label:'Not-selected'},
         {value:'hydro',label:'Hydro Electricity'},
@@ -85,4 +85,4 @@ const FormDialog = async () => {
   )
 }
 
-export default FormDialog
+export default AddProduct
