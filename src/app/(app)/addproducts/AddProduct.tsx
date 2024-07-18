@@ -26,6 +26,7 @@ const AddProduct = async () => {
     ]
     const {session}=await getUserAuth();
     const sellerid=session?.user.id;
+    const email=session?.user.email
     return (
         
     <Dialog >
@@ -63,6 +64,7 @@ const AddProduct = async () => {
                                     <Input type='text' size={50} placeholder='describe your product in less than 50 words' name='description' required />
                                 </div>
                                 <Input type='hidden' name='sellerid' value={sellerid}/>
+                                <Input type='hidden' name='email' value={email}/>
                                 <div>
                                     <Label>Product price</Label>
                                     <Input type='number' size={50} placeholder='Enter product price in INR' required name='price'/>

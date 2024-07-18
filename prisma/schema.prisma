@@ -83,6 +83,7 @@ model Seller{
   country       String
   city          String
   email         String    @unique
+  test          String?
 
 }
 
@@ -93,6 +94,6 @@ model Product{
   description   String?
   sellerId      String
   price         Int
-
+  email         String
   seller        Seller    @relation(fields: [sellerId],references: [id])
 }

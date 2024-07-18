@@ -1,11 +1,6 @@
 
 import AddSellerData from '@/components/AddSellerData'
-import { Button } from '@/components/ui/button';
 import { getUserAuth } from '@/lib/auth/utils'
-
-import Modal from './Modal';
-import { useState } from 'react';
-import FormDialog from './AddProduct';
 import AddProduct from './AddProduct';
 
 
@@ -37,9 +32,11 @@ const AddProducts = async  () => {
         <h1 className="text-2xl font-semibold my-4">Add Products</h1>
         <div>
           <div >
-            <AddProduct  />
+            <AddProduct/>
           </div>
-          
+          <div>
+            
+          </div>
         </div>
       </div>
     )

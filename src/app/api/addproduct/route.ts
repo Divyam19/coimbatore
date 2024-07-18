@@ -13,11 +13,14 @@ export async function POST(req:Request) {
     const description=data.get("description") as string;
     const price = parseFloat(data.get('price') as string);
     const sellerid=data.get('sellerid') as string;
+    const email=data.get('email') as string;
+    
     console.log(name)
     console.log(price)
     console.log(type)
     console.log(sellerid)
     console.log(description)
+    
     try{
         const product=await db?.product.create({
             data:{
@@ -26,7 +29,7 @@ export async function POST(req:Request) {
                 description:description,
                 sellerId:sellerid,
                 price:price,
-                
+                email:email,
             }
         })
 
