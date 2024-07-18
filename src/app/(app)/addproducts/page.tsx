@@ -1,7 +1,12 @@
+
 import AddSellerData from '@/components/AddSellerData'
+import { Button } from '@/components/ui/button';
 import { getUserAuth } from '@/lib/auth/utils'
-import { get } from 'http'
-import React, { useState } from 'react'
+
+import Modal from './Modal';
+import { useState } from 'react';
+import FormDialog from './FormDialog';
+
 
 async function checkSellerEmail(email:string) {
 
@@ -20,15 +25,20 @@ async function checkSellerEmail(email:string) {
 }
 
 const AddProducts = async  () => {
-  // const [registered, setRegistered] = useState(false)
+  // const [showModal, setShowModal] = useState(false)
   const {session}=await getUserAuth()
   const emailToCheck : string=session?.user.email as string;
   const sellerExists =await checkSellerEmail(emailToCheck);
 
   if(sellerExists){
     return(
-      <div>
-        seller exists
+      <div className='my-4'>
+        <h1 className="text-2xl font-semibold my-4">Add Products</h1>
+        <div>
+          <div >
+            <FormDialog  />
+          </div>
+        </div>
       </div>
     )
   }else{

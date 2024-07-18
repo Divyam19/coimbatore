@@ -92,7 +92,7 @@ model Product{
   type          String
   description   String?
   sellerId      String
-  production    String?
+  price         Int
 
   seller        Seller    @relation(fields: [sellerId],references: [id])
 }

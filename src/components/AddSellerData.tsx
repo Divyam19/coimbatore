@@ -14,9 +14,6 @@ import {
 import { Button } from './ui/button'
 import { getUserAuth } from '@/lib/auth/utils'
 
-const handleSubmit = async(e:Event)=>{
-    e.preventDefault()
-}
 const AddSellerData=async()=>{
     const {session}=await getUserAuth();
     const name=session?.user.name as string
