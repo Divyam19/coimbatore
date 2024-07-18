@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button'
   
 const FormDialog = async () => {
     const options=[
+        {value:'not-selected',label:'Not-selected'},
         {value:'hydro',label:'Hydro Electricity'},
         {value:'solar',label:'Solar Electricity'},
         {value:'wind',label:'Wind Electricity'},
@@ -33,7 +34,7 @@ const FormDialog = async () => {
             <DialogHeader>
             <DialogTitle>Add a new Product</DialogTitle>
             <DialogDescription>
-                <form >
+                <form action={'/api/addproduct'} method='POST'>
                     <Card>
                         <CardHeader>
                             <CardTitle>Add Product</CardTitle>
@@ -43,7 +44,7 @@ const FormDialog = async () => {
                             <div className='flex flex-col gap-3'>
                                 <div>
                                     <Label>Product Name</Label>
-                                    <Input type='text' placeholder='Product name'  name='name' />
+                                    <Input type='text' placeholder='Product name'  name='name' required/>
                                 </div>
                                 <div>
                                     <Label>Type</Label>
@@ -59,9 +60,13 @@ const FormDialog = async () => {
                                 </div>
                                 <div>
                                     <Label>Product description</Label>
-                                    <Input type='text' size={50} placeholder='describe your product in less than 50 words' name='description'/>
+                                    <Input type='text' size={50} placeholder='describe your product in less than 50 words' name='description' required />
                                 </div>
                                 <Input type='hidden' name='sellerid' value={sellerid}/>
+                                <div>
+                                    <Label>Product price</Label>
+                                    <Input type='number' size={50} placeholder='Enter product price in INR' required name='price'/>
+                                </div>
                             </div>
                         </CardContent>
                         <CardFooter>

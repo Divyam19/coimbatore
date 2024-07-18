@@ -7,7 +7,7 @@ export const productSchema = z.object({
   type: z.string(),
   description: z.string().nullish(),
   sellerId: z.string(),
-  production: z.string().nullish(),
+  price: z.number().int(),
 })
 
 export interface CompleteProduct extends z.infer<typeof productSchema> {
