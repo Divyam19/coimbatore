@@ -2,6 +2,7 @@
 import AddSellerData from '@/components/AddSellerData'
 import { getUserAuth } from '@/lib/auth/utils'
 import AddProduct from './AddProduct';
+import Products from './Products';
 
 
 async function checkSellerEmail(email:string) {
@@ -24,7 +25,7 @@ const AddProducts = async  () => {
   // const [showModal, setShowModal] = useState(false)
   const {session}=await getUserAuth()
   const emailToCheck : string=session?.user.email as string;
-  const sellerExists =await checkSellerEmail(emailToCheck);
+const sellerExists =await checkSellerEmail(emailToCheck);
 
   if(sellerExists){
     return(
@@ -35,7 +36,7 @@ const AddProducts = async  () => {
             <AddProduct/>
           </div>
           <div>
-            
+            <Products/>
           </div>
         </div>
       </div>

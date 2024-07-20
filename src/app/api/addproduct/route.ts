@@ -20,6 +20,7 @@ export async function POST(req:Request) {
     console.log(type)
     console.log(sellerid)
     console.log(description)
+    console.log(email)
     
     try{
         const product=await db?.product.create({

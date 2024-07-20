@@ -18,8 +18,6 @@ import { DialogClose } from '@radix-ui/react-dialog'
 
 const AddProduct = () => {
     const { data: session } = useSession();
-    const email=(session?.user.email) as string
-    const sellerid=(session?.user.id)   as string
     const [formData, setFormData] = useState({
         name: '',
         type: 'not-selected',
@@ -47,21 +45,20 @@ const AddProduct = () => {
     };
 
     const onSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        const data=new FormData(e.target as HTMLFormElement);
-        const response = await fetch('/api/addproduct', {
-            method: 'POST',
-            body: data,
-        });
-        window.location.reload()
-        if (response.ok) {
-            console.log('success');
-        } else {
-            console.log('error');
+        // e.preventDefault();
+        try {
+            const response = await axios.post('/api/addproduct', {
+                ...formData,
+                sellerid: session?.user.id,
+                email: session?.user.email
+            });
+            console.log('Product added:', response.data);
+            // Handle success (e.g., show a success message, clear form, close dialog)
+        } catch (error) {
+            console.error('Error adding product:', error);
+            // Handle error (e.g., show error message)
         }
-    }
-
-    
+    };
 
     return (
         <Dialog>
@@ -100,8 +97,6 @@ const AddProduct = () => {
                                             <Label>Product price</Label>
                                             <Input type='number' size={50} placeholder='Enter product price in INR' required name='price' value={formData.price} onChange={handleChange} />
                                         </div>
-                                        <Input type='hidden' name='sellerid' value={sellerid}/>
-                                        <Input type='hidden' name='email' value={email}/>
                                     </div>
                                 </CardContent>
                                 <CardFooter>
