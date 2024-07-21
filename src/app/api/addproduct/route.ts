@@ -14,6 +14,10 @@ export async function POST(req:Request) {
     const price = parseFloat(data.get('price') as string);
     const sellerid=data.get('sellerid') as string;
     const email=data.get('email') as string;
+    const mobno=data.get('mobno') as string;
+    const city=data.get('city') as string;
+    const country=data.get('country') as string;
+    const state=data.get('state') as string;
     
     console.log(name)
     console.log(price)
@@ -31,6 +35,10 @@ export async function POST(req:Request) {
                 sellerId:sellerid,
                 price:price,
                 email:email,
+                mobno:mobno,
+                city:city,
+                country:country,
+                state:state,
             }
         })
 

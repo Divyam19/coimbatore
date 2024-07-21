@@ -5,9 +5,11 @@ export const sellerSchema = z.object({
   id: z.string(),
   name: z.string(),
   country: z.string(),
+  state: z.string(),
   city: z.string(),
   email: z.string(),
   test: z.string().nullish(),
+  mobno: z.string().nullish(),
 })
 
 export interface CompleteSeller extends z.infer<typeof sellerSchema> {

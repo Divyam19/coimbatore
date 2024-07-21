@@ -81,15 +81,21 @@ model Seller{
   name          String
   products      Product[]
   country       String
+  state         String
   city          String
   email         String    @unique
   test          String?
-
+  mobno         String?
 }
 
 model Product{
   id            String    @id @default(cuid())
   name          String
+  mobno         String    
+  city          String?
+  state         String?
+  country       String?   
+  output        String?
   type          String
   description   String?
   sellerId      String

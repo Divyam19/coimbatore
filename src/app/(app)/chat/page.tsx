@@ -10,7 +10,7 @@ const Chat = () => {
   const [userInput, setUserInput] = useState("");
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [defaultMessage, setDefaultMessage] = useState("bum chiki chiki bum bum");
+  const [defaultMessage, setDefaultMessage] = useState("Hi, I'm Sol Mate. I'm here to solve all your energy needs. How can I help you? \n Ask me anything.");
 
   const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY as string);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });

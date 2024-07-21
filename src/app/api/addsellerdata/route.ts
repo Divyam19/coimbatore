@@ -12,15 +12,21 @@ export async function POST(req:Request) {
     const name=data.get("name") as string;
     const id=data.get('id') as string;
     const email=data.get('email') as string;
+    const mobno=data.get('mobno') as string;
+    const state=data.get('state') as string;
+    console.log(city,country,name,id,email,mobno,state)
     
     try{
         const seller=await db.seller.create({
             data:{
+                test:"",
                 name:name,
                 city:city,
                 country:country,
                 id:id,
                 email:email,
+                mobno:mobno,
+                state:state,         
             }
         })
 

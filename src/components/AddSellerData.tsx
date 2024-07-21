@@ -1,8 +1,8 @@
-
+'use client'
 import { Label } from '@radix-ui/react-dropdown-menu'
 import React from 'react'
 import { Input } from './ui/input'
-import { getSession } from 'next-auth/react'
+import { getSession, useSession } from 'next-auth/react'
 import {
     Card,
     CardContent,
@@ -14,16 +14,30 @@ import {
 import { Button } from './ui/button'
 import { getUserAuth } from '@/lib/auth/utils'
 
-const AddSellerData=async()=>{
-    const {session}=await getUserAuth();
+const AddSellerData=()=>{
+    const {data:session}= useSession();
     const name=session?.user.name as string
     const email=session?.user.email as string
     const id=session?.user.id as string
-    // console.log(email)
+    console.log(email)
+    const onSubmit=async(e:React.FormEvent)=>{
+        e.preventDefault();
+        const data=new FormData(e.target as HTMLFormElement);
+        const response = await fetch('/api/addsellerdata', {
+            method: 'POST',
+            body: data,
+        });
+        window.location.reload()
+        if (response.ok) {
+            console.log('success');
+        } else {
+            console.log('error');
+        }
+    }
     return (
         <div>
             <div>
-                <form action={'/api/addsellerdata'} method='POST' >
+                <form onSubmit={onSubmit} >
                     {/* <Label>{email}</Label> */}
                     <Input type='hidden' value={name} name='name'/>
                     <Input type='hidden' value={email} name='email'/>
@@ -40,9 +54,17 @@ const AddSellerData=async()=>{
                                     <Input type='text' placeholder='India' value="India" readOnly name='country' />
                                 </div>
                                 <div>
+                                    <Label>State</Label>
+                                    <Input type='text' placeholder='Enter your State'name='state'/>
+                                    
+                                </div>
+                                <div>
                                     <Label>City</Label>
                                     <Input type='text' placeholder='Enter your city'name='city'/>
-                                    
+                                </div>
+                                <div>
+                                    <Label>Mobile Number</Label>
+                                    <Input type='number' placeholder='Enter your 10 digit Mobile number'name='mobno'/>
                                 </div>
                             </div>
                         </CardContent>

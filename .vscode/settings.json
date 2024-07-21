@@ -1,0 +1,5 @@
+{
+    "WillLuke.nextjs.hasPrompted": true,
+    "prisma.scriptRunner": "pnpm",
+    "prisma.trace.server": "messages"
+}

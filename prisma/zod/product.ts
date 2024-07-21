@@ -4,6 +4,11 @@ import { CompleteSeller, relatedSellerSchema } from "./index"
 export const productSchema = z.object({
   id: z.string(),
   name: z.string(),
+  mobno: z.string(),
+  city: z.string().nullish(),
+  state: z.string().nullish(),
+  country: z.string().nullish(),
+  output: z.string().nullish(),
   type: z.string(),
   description: z.string().nullish(),
   sellerId: z.string(),
