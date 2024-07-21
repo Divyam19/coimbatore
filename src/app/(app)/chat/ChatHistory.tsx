@@ -15,7 +15,9 @@ const ChatHistory = ({chatHistory}:any) => {
           {message.type === "user" && (
             <span className="mr-2 font-bold text-gray-600">You:</span>
           )}
-
+          {message.type === "bot" && (
+            <span className="mr-2 font-bold text-blue-900">SolMate:</span>
+          )}
           <div>
             <ReactMarkdown>{message.message}</ReactMarkdown>
           </div>
