@@ -1,51 +1,45 @@
-import { authOptions, getUserAuth } from "@/lib/auth/utils";
-import { getServerSession } from "next-auth";
-import { db } from "@/lib/db";
-import { getSession } from "next-auth/react";
+// E:\nextjs projects\coimbatore\src\app\api\addproduct\route.ts
 
-export async function POST(req:Request) {
-    // const {session}=await getUserAuth();
-    const data=await req.formData()
-    const name = data.get("name") as string;
-    // console.log('city')
-    const type=data.get("type") as string;
+import { NextResponse } from 'next/server';
+import {db} from '@/lib/db'; // Adjust this import based on your project structure
 
-    const description=data.get("description") as string;
-    const price = parseFloat(data.get('price') as string);
-    const sellerid=data.get('sellerid') as string;
-    const email=data.get('email') as string;
-    const mobno=data.get('mobno') as string;
-    const city=data.get('city') as string;
-    const country=data.get('country') as string;
-    const state=data.get('state') as string;
-    
-    console.log(name)
-    console.log(price)
-    console.log(type)
-    console.log(sellerid)
-    console.log(description)
-    console.log(email)
-    
-    try{
-        const product=await db?.product.create({
-            data:{
-                name:name,
-                type:type,
-                description:description,
-                sellerId:sellerid,
-                price:price,
-                email:email,
-                mobno:mobno,
-                city:city,
-                country:country,
-                state:state,
-            }
-        })
+export async function POST(request: Request) {
+  try {
+    const formData = await request.formData();
+    const name = formData.get('name') as string;
+    const mobno = formData.get('mobno') as string;
+    const city = formData.get('city') as string;
+    const state = formData.get('state') as string;
+    const country = formData.get('country') as string;
+    const type = formData.get('type') as string;
+    const description = formData.get('description') as string;
+    const sellerId = formData.get('sellerid') as string;
+    const price = parseFloat(formData.get('price') as string);
+    const email = formData.get('email') as string;
+    const output = formData.get('output') as string;
 
-        if(!product) return new Response("Failed to create seller",{status:500})
-    
-        }catch(error){
-            console.error("Error creating product:", error);
-            return new Response("Internal Server Error", { status: 500 }); 
-    }
+    const product = await db!.product.create({
+      data: {
+        name,
+        mobno,
+        city,
+        state,
+        country,
+        type,
+        description,
+        sellerId,
+        price,
+        email,
+        output,
+      },
+    });
+
+    return NextResponse.json({ success: true, product }, { status: 201 });
+  } catch (error) {
+    console.error('Error adding product:', error);
+    return NextResponse.json(
+      { success: false, error: 'Failed to add product' },
+      { status: 500 }
+    );
+  }
 }

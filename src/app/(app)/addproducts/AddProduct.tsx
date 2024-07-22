@@ -100,10 +100,10 @@ const AddProduct = () => {
                             <Card>
                                 <CardHeader>
                                     <CardTitle>Add Product</CardTitle>
-                                    <CardDescription>Add New Product Details</CardDescription>
+                                    
                                 </CardHeader>
                                 <CardContent>
-                                    <div className='flex flex-col gap-3'>
+                                    <div className='flex flex-col '>
                                         <div>
                                             <Label>Product Name</Label>
                                             <Input type='text' placeholder='Product name' name='name' required   />
@@ -131,11 +131,29 @@ const AddProduct = () => {
                                             <Input type='text'  placeholder='Enter the energy output in Kw,joules or required unit' required name='output'   />
                                         </div>
                                         <div>
-                                            <Input type='hidden' name='mobno' value={sellerData.mobno} />
+                                            <Label>City</Label>
+                                            <Input type='text'  placeholder='Enter the city' required name='city'   />
+                                        </div>
+                                        <div>
+                                            <Label>Country</Label>
+                                            <Input type='text'  placeholder='country' required name='country' value='India' readOnly   />
+                                        </div>
+                                        <div>
+                                            <Label>Energy Output</Label>
+                                            <Input type='text'  placeholder='Enter the state' required name='state'   />
+                                        </div>
+                                        <div>
+                                            <Label>Energy Output</Label>
+                                            <Input type='text'  placeholder='Enter mobile no' required name='mobno'   />
+                                        </div>
+                                        
+                                        
+                                        <div>
+                                            {/* <Input type='hidden' name='mobno' value={sellerData.mobno} />
                                             <Input type='hidden' name='city' value={sellerData.city} />
                                             <Input type='hidden' name='country' value={sellerData.country} />
-                                            <Input type='hidden' name='state' value={sellerData.state} />
-                                            <Input type='hidden' name='email' value={email} />
+                                            <Input type='hidden' name='state' value={sellerData.state} />*/}
+                                            <Input type='hidden' name='email' value={email} /> 
                                             <Input type='hidden' name='sellerid' value={sellerid} />
                                         </div>
                                     </div>
@@ -444,3 +462,7 @@ const AddProduct = () => {
 
 export default AddProduct
 */}
+
+
+
+
