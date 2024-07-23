@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { env } from "@/lib/env.mjs"
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
-
+import { Role } from "@prisma/client";
 
 declare module "next-auth" {
   interface Session {
@@ -46,7 +46,6 @@ export const authOptions: NextAuthOptions = {
   ],
 };
 
-
 export const getUserAuth = async () => {
   const session = await getServerSession(authOptions);
   return { session } as AuthSession;
@@ -56,4 +55,3 @@ export const checkAuth = async () => {
   const { session } = await getUserAuth();
   if (!session) redirect("/api/auth/signin");
 };
-

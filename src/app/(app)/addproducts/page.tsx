@@ -21,11 +21,16 @@ async function checkSellerEmail(email:string) {
   }
 }
 
+
 const AddProducts = async  () => {
   // const [showModal, setShowModal] = useState(false)
   const {session}=await getUserAuth()
   const emailToCheck : string=session?.user.email as string;
 const sellerExists =await checkSellerEmail(emailToCheck);
+
+// if(session?.user.role === "USER"){
+//   return(<div>You are not authorized to access this page.</div>)
+// }
 
   if(sellerExists){
     return(
@@ -35,6 +40,7 @@ const sellerExists =await checkSellerEmail(emailToCheck);
           <div >
             <AddProduct/>
           </div>
+          <br/>
           <div>
             <Products/>
           </div>

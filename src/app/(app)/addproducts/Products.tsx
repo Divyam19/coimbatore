@@ -53,25 +53,24 @@ const Products = () => {
       {isLoading && <p>Loading products...</p>}
       {error && <p>Error: {error.message}</p>}
       {products.length > 0 && (
-        <ul className='flex flex-col gap-4'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
           {products.map((product: Product) => (
-            <li key={product.id} className=''>
-              <Card>
-                <CardHeader>
-                  <CardTitle>{product.name}</CardTitle> 
-                  <CardDescription>{product.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>{product.type}</p>
-                  <p>Rs. {product.price}./</p>
-                </CardContent>
-                <CardFooter>
-                  <p>Card Footer</p>
-                </CardFooter>
-              </Card>
-            </li>
+            <Card key={product.id} className='w-full h-64 bg-gradient-to-r from-black animate-gradient-x via-green-400  font-bold '>
+              <CardHeader>
+                <CardTitle className='pb-2'>{product.name}</CardTitle>
+                
+                <CardDescription className='text-gray-200'>{product.type}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>{product.description}</p>
+                <p>Rs. {product.price}./</p>
+              </CardContent>
+              <CardFooter>
+                <p>{product.output}</p>
+              </CardFooter>
+            </Card>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   )
