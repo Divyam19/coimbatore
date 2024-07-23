@@ -139,11 +139,11 @@ const AddProduct = () => {
                                             <Input type='text'  placeholder='country' required name='country' value='India' readOnly   />
                                         </div>
                                         <div>
-                                            <Label>Energy Output</Label>
+                                            <Label>State</Label>
                                             <Input type='text'  placeholder='Enter the state' required name='state'   />
                                         </div>
                                         <div>
-                                            <Label>Energy Output</Label>
+                                            <Label>Mobile No</Label>
                                             <Input type='text'  placeholder='Enter mobile no' required name='mobno'   />
                                         </div>
                                         
