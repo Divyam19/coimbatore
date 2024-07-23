@@ -4,6 +4,7 @@ import SidebarItems from "./SidebarItems";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 
 import { AuthSession, getUserAuth } from "@/lib/auth/utils";
+import { Mountain } from "lucide-react";
 
 const Sidebar = async () => {
   const session = await getUserAuth();
@@ -13,7 +14,10 @@ const Sidebar = async () => {
     <aside className="h-screen max-w-52 bg-muted hidden md:block p-4 pt-8 border-r border-border shadow-inner">
       <div className="flex flex-col justify-between h-full">
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold ml-4">Logo</h3>
+          <div className="flex flex-row items-center pb-8">
+            <Mountain className="h-6 w-6 text-green-500" />
+            <h3 className="text-xl font-bold text-green-500 ml-4 flex">Econ-wave  </h3>
+          </div>
           <SidebarItems />
         </div>
         <UserDetails session={session} />
