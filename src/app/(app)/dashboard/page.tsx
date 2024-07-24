@@ -125,7 +125,7 @@ export default async function Home() {
               <CardTitle className="text-lg font-medium">Total Revenue</CardTitle>
             </CardHeader>
             <CardContent>
-              <h2 className="text-4xl font-bold text-green-400">$45,231.89</h2>
+              <h2 className="text-4xl font-bold text-green-400">Rs. 45,231.89</h2>
             </CardContent>
             <CardFooter>
               <p className="text-gray-400">+20.1% from last month</p>
@@ -177,7 +177,7 @@ export default async function Home() {
       </div>
       {session ? (
         <pre className="bg-secondary p-4 rounded-sm shadow-sm text-secondary-foreground break-all whitespace-break-spaces">
-          {JSON.stringify(session, null, 2)}
+          {/* {JSON.stringify(session, null, 2)} */}
         </pre>
       ) : null}
       <SignIn />
