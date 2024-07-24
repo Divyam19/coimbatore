@@ -59,7 +59,7 @@ const Products = () => {
               <CardHeader>
                 <CardTitle className='pb-2'>{product.name}</CardTitle>
                 
-                <CardDescription className='text-gray-200'>{product.type}</CardDescription>
+                <CardDescription className='text-black'>{product.type}</CardDescription>
               </CardHeader>
               <CardContent>
                 <p>{product.description}</p>
