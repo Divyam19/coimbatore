@@ -55,7 +55,7 @@ const Products = () => {
       {products.length > 0 && (
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
           {products.map((product: Product) => (
-            <Card key={product.id} className='w-full h-64 bg-gradient-to-r from-black animate-gradient-x via-green-400  font-bold '>
+            <Card key={product.id} className='w-full  bg-gradient-to-r from-black animate-gradient-x via-green-400  font-bold '>
               <CardHeader>
                 <CardTitle className='pb-2'>{product.name}</CardTitle>
                 
